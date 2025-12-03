@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import {Container, Row, Col} from 'react-bootstrap';
+import "./Sneakers.css";
+import ShoeCard from "./ShoeCard";
 
 export default function Sneakers(props) {
 
@@ -55,6 +58,8 @@ export default function Sneakers(props) {
                     }
 
                     const data = await resp.json();
+                    // console.log("API RESPONSE:", data);
+
                     if (!cancelled) {
                         setAllSneakers(data);
                         setLoading(false);
@@ -82,7 +87,7 @@ export default function Sneakers(props) {
     }, [BACKEND_URL]);
 
     if (loading) {
-        return <p>Loading sneakers, please wait…</p>;
+        return <h1>Sneaker Vault...</h1>;
     }
 
     if (error) {
@@ -90,17 +95,28 @@ export default function Sneakers(props) {
     }
 
     return (
-        <div>
-            <h1>Trending Sneakers</h1>
-            <ul>
-                {allSneakers.map((shoe) => (
-                    <li key={shoe.styleID || shoe.shoeName}>
-                        {shoe.brand ? `${shoe.brand} ` : ""}
-                        {shoe.shoeName}
-                        {shoe.retailPrice ? ` – $${shoe.retailPrice}` : ""}
-                    </li>
-                ))}
-            </ul>
+        <div style = {{paddingTop: 80}}>
+            <Container fluid>
+                <Row>
+                    <h1 style = {{paddingBottom: 40}}> Trending Sneakers</h1>
+                        {console.log(allSneakers)}
+                        {/* TODO: 1) Get all Sneakers (+ implement Pagination - LATER), 2) Implement Filtering Logic with Search Bar below "Trending Sneakers", 3) Implement Filtering Logic on LHS by Brand, Price, Color, 4) Add a 'My Shoes' page*/}
+                        {/* General TODO: fix any spacing/coloring to be consistent for any device*/}
+                        {allSneakers.map((shoe) => (
+                            <Col>
+                                <ShoeCard 
+                                    key = {shoe.make}
+                                    brand = {shoe.brand}
+                                    shoeName = {shoe.shoeName}
+                                    colorway = {shoe.colorway}
+                                    thumbnail = {shoe.thumbnail}
+                                    retailPrice = {shoe.retailPrice}
+                                    silhoutte = {shoe.silhoutte}
+                                />
+                            </Col>
+                        ))}
+                </Row>
+            </Container>
         </div>
     );
 }

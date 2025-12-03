@@ -1,0 +1,25 @@
+.shoe-card {
+  width: 250px;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.shoe-img {
+  height: 180px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Prevents long names from expanding card */
+.card-title {
+  min-height: 60px; 
+  font-size: 1rem;
+  line-height: 1.2;
+  overflow: hidden;
+}

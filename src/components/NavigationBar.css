@@ -1,7 +1,15 @@
-#logo{
+#brand{
     margin-left: 1%;
 }
 
 #links{
-    margin-left: 35%;
+    margin-left: 40%;
+}
+
+#svl-logo{
+    margin-left: 30px;
+}
+
+#svr-logo{
+    margin-right: 30px;
 }

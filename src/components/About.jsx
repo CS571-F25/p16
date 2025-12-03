@@ -2,7 +2,7 @@ export default function About(props) {
     return <div >
         <h1>What is Sneaker Vault?</h1><br/>
 
-        <div style={{ textAlign: 'left' }}>
+        <div style={{ textAlign: 'left', paddingBottom: 390 }}>
             <h2>Your Hub for Sneaker Discovery</h2>
             <p>
                 Sneaker Vault is designed to help users explore a wide variety of sneakers 
