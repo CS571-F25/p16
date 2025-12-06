@@ -14,13 +14,13 @@ function ShoeCard(props) {
   let silhoutte = props.silhoutte;
 
   return (
-    <Card className = "shoe-card"> 
-      <Card.Img variant="top" src={thumbnail} alt = {silhoutte} className = "shoe-img"/>
-      <Card.Body>
-        {shoeName ? <Card.Title>{shoeName}</Card.Title> : <></>}
-        {colorway ? <Card.Text>{`Color: ${colorway}`}</Card.Text> : <></>}
-        {brand ? <Card.Text>{`Brand: ${brand}`}</Card.Text>: <></>}
-        {retailPrice ? <Card.Text>{`Price: $${retailPrice}`}</Card.Text> : <></>}
+    <Card className="h-100"> 
+      <Card.Img variant="top" src={thumbnail} alt={silhoutte} style={{ objectFit: 'contain', height: '150px', padding: '8px' }} />
+      <Card.Body className="d-flex flex-column p-2">
+        {shoeName ? <Card.Title className="fs-6 mb-2">{shoeName}</Card.Title> : <></>}
+        {colorway ? <Card.Text className="small mb-1">{`Color: ${colorway}`}</Card.Text> : <></>}
+        {brand ? <Card.Text className="small mb-1">{`Brand: ${brand}`}</Card.Text>: <></>}
+        {retailPrice ? <Card.Text className="small mt-auto fw-bold">{`Price: $${retailPrice}`}</Card.Text> : <></>}
 
         {/* TODO: 1) Add the prices & links to buy below 'Price' and fix card object spacing as needed, 2) Fix card object properties as deemed necessary*/}
       </Card.Body>

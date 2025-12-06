@@ -1,0 +1,37 @@
+.filter-panel {
+  margin-bottom: 20px;
+  position: sticky;
+  top: 100px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  min-width: 250px;
+  width: 100%;
+}
+
+.filter-panel .card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  font-weight: 600;
+}
+
+.filter-panel .accordion-button {
+  font-weight: 500;
+}
+
+.filter-panel .accordion-body {
+  padding: 1rem;
+}
+
+.filter-panel .form-check {
+  margin-bottom: 0.75rem;
+}
+
+.filter-panel .form-check-label {
+  cursor: pointer;
+}
+
+.filter-actions {
+  border-top: 1px solid #dee2e6;
+  padding-top: 1rem;
+}
+
