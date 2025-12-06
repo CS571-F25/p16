@@ -1,5 +1,6 @@
 import { Card, Button, ButtonGroup } from "react-bootstrap";
 import "./ShoeCard.css"
+import FavoriteButton from "./FavoriteButton";
 
 function ShoeCard(props) {
 
