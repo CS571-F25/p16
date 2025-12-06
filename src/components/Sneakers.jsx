@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Pagination } from "react-bootstrap";
 import "./Sneakers.css";
 import ShoeCard from "./ShoeCard";
 import FilterPanel from "./FilterPanel";
+
 
 export default function Sneakers() {
     const [allSneakers, setAllSneakers] = useState([]);
@@ -16,6 +17,15 @@ export default function Sneakers() {
     const [prices, setPrices] = useState([]);
     const [filtered, setFiltered] = useState([]);
     const [filtersActive, setFiltersActive] = useState(false);
+
+    // variable for pagination
+    const [page, setPage] = useState(1);
+    const itemsPerPage = 15;
+
+    // Get the data to paginate
+    const dataToPaginate = filtersActive ? filtered : allSneakers;
+    const totalPages = Math.ceil(dataToPaginate.length / itemsPerPage);
+    const display = dataToPaginate.slice((page - 1) * itemsPerPage, page * itemsPerPage);
 
 
     const BACKEND_URL = "https://p16-backend.onrender.com/api/sneakers";
@@ -113,6 +123,7 @@ export default function Sneakers() {
 
       setFiltersActive(hasFilters);
       setFiltered(toFilter);
+      setPage(1); // Reset to first page when filters change
     }
 
 
@@ -211,6 +222,7 @@ export default function Sneakers() {
                 setAllSneakers(data);
                 setFiltered([]); // Reset filtered results on new search
                 setFiltersActive(false); // Reset filter active state on new search
+                setPage(1); // Reset to first page on new search
 
                 // now that we have the data --> we can find what brands, colors, and prices so we know what we can filter
                 findBrands(data);
@@ -276,7 +288,7 @@ export default function Sneakers() {
                                 </div>
                             ) : (
                                 <Row className="g-3">
-                                    {(filtersActive ? filtered : allSneakers).map((shoe) => (
+                                    {display.map((shoe) => (
                                         <Col key={shoe.styleID || shoe.shoeName} xs={12} sm={6} md={4} lg={3}>
                                             <ShoeCard
                                                 brand={shoe.brand}
@@ -294,6 +306,37 @@ export default function Sneakers() {
                     )}
                     </Col>
                 </Row>
+
+                {
+                  dataToPaginate.length > 0 && totalPages > 1 && (
+                      <div className="d-flex justify-content-center mt-4">
+                          <Pagination>
+                              {/* Previous button */}
+                              <Pagination.Prev 
+                                  disabled={page === 1}
+                                  onClick={() => setPage(prev => Math.max(1, prev - 1))}
+                              />
+
+                              {/* Actual pagination button */}
+                              {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+                                  <Pagination.Item
+                                      key={pageNum}
+                                      active={pageNum === page}
+                                      onClick={() => setPage(pageNum)}
+                                  >
+                                      {pageNum}
+                                  </Pagination.Item>
+                              ))}
+
+                              {/* Next button */}
+                              <Pagination.Next 
+                                  disabled={page === totalPages}
+                                  onClick={() => setPage(prev => Math.min(totalPages, prev + 1))}
+                              />
+                          </Pagination>
+                    </div>
+                )}
+
             </Container>
         </div>
     );

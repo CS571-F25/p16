@@ -4,8 +4,6 @@
   top: 100px;
   max-height: calc(100vh - 120px);
   overflow-y: auto;
-  min-width: 250px;
-  width: 100%;
 }
 
 .filter-panel .card-header {
