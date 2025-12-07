@@ -29,10 +29,7 @@ export default function Sneakers() {
 
 
     const BACKEND_URL = "https://p16-backend.onrender.com/api/sneakers";
-    console.log(allSneakers)
-    console.log(brands)
-    console.log(colors)
-    console.log(prices)
+    
 
     function handleFilter(filteredObj) {
       let toFilter = [...allSneakers];
@@ -291,12 +288,14 @@ export default function Sneakers() {
                                     {display.map((shoe) => (
                                         <Col key={shoe.styleID || shoe.shoeName} xs={12} sm={6} md={4} lg={3}>
                                             <ShoeCard
+                                                styleID={shoe.styleID}
                                                 brand={shoe.brand}
                                                 shoeName={shoe.shoeName}
                                                 colorway={shoe.colorway}
                                                 thumbnail={shoe.thumbnail}
                                                 retailPrice={shoe.retailPrice}
                                                 silhoutte={shoe.silhoutte}
+                                                id={shoe._id}
                                             />
                                         </Col>
                                     ))}

@@ -41,7 +41,6 @@ export default function Trending(props) {
                     }
 
                     const data = await resp.json();
-                    // console.log("API RESPONSE:", data);
 
                     if (!cancelled) {
                         setAllSneakers(data);
@@ -81,19 +80,20 @@ export default function Trending(props) {
             <Container fluid>
                 <Row>
                     <h1 style = {{paddingBottom: 40}}>Need more than Shoes? Trending Products on the Market!</h1>
-                        {console.log(allSneakers)}
                         {/* TODO: 1) Get all Sneakers (+ implement Pagination - LATER), 2) Implement Filtering Logic with Search Bar below "Trending Sneakers", 3) Implement Filtering Logic on LHS by Brand, Price, Color, 4) Add a 'My Shoes' page*/}
                         {/* General TODO: fix any spacing/coloring to be consistent for any device*/}
                         {allSneakers.map((shoe) => (
                             <Col key={shoe.styleID || shoe.shoeName}>
                                 <ShoeCard 
                                     key = {shoe.make}
+                                    styleID={shoe.styleID}
                                     brand = {shoe.brand}
                                     shoeName = {shoe.shoeName}
                                     colorway = {shoe.colorway}
                                     thumbnail = {shoe.thumbnail}
                                     retailPrice = {shoe.retailPrice}
                                     silhoutte = {shoe.silhoutte}
+                                    id={shoe._id}
                                 />
                             </Col>
                         ))}
