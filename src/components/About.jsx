@@ -2,7 +2,7 @@ export default function About(props) {
     return <div >
         <h1>What is Sneaker Vault?</h1><br/>
 
-        <div style={{ textAlign: 'left', paddingBottom: 390 }}>
+        <div style={{ textAlign: 'left', paddingBottom: 100}}>
             <h2>Your Hub for Sneaker Discovery</h2>
             <p>
                 Sneaker Vault is designed to help users explore a wide variety of sneakers 
@@ -11,10 +11,16 @@ export default function About(props) {
                 and quickly find the pair that fits your needs.
             </p><br/>
 
+            <h2>Trending Products</h2>
+
+            <p>
+                In our Trending Products page, you can find the most hip and up-to-date foot and streetwear.
+            </p><br />
+
             <h2>Smart Filtering & Search</h2>
 
             <p>
-                The main way to begin finding sneakers is through the search bar. 
+                In our All Sneakers page, the primary way to begin finding sneakers is through the search bar. 
                 As users type, we will perform primary filtering on the results.
             </p>
             <p>
@@ -24,10 +30,10 @@ export default function About(props) {
 
             <strong>Filter Options</strong>
             <ul>
-                <li><strong>Price:</strong> adjusted using a slider</li>
-                <li><strong>Size &amp; Gender:</strong> selected with checkboxes</li>
                 <li><strong>Brand:</strong> selected with checkboxes</li>
-                <li><strong>Rating:</strong> filtered using a 5-star rating system</li>
+                <li><strong>Color &amp; Gender:</strong> selected with checkboxes</li>
+                <li><strong>Price Range:</strong> inputted with a minimum and maximum price range</li>
+                <li><strong>Sorting:</strong> a checkbox system that enables sorting by price, name, and brand</li>
             </ul>
 
             <h2>The <em style={{ color: 'purple' }}>Magic</em> Behind The Scenes</h2>

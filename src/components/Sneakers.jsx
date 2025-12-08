@@ -27,7 +27,6 @@ export default function Sneakers() {
     const totalPages = Math.ceil(dataToPaginate.length / itemsPerPage);
     const display = dataToPaginate.slice((page - 1) * itemsPerPage, page * itemsPerPage);
 
-
     const BACKEND_URL = "https://p16-backend.onrender.com/api/sneakers";
     
 
@@ -244,7 +243,7 @@ export default function Sneakers() {
         <div style={{ paddingTop: 80 }}>
             <Container fluid>
                 <Row>
-                    <h1 style={{ paddingBottom: 20 }}>Search Sneakers</h1>
+                    <h1 style={{ paddingBottom: 20}}>Search Sneakers</h1>
                 </Row>
                 <Row>
 
@@ -261,19 +260,19 @@ export default function Sneakers() {
                         {/* Search form */}
                     <form
                         onSubmit={handleSearch}
-                        style={{ marginBottom: 30, width: "100%", display: "flex", alignItems: "center" }}
+                        style={{ marginBottom: 30, width: "100%", display: "flex", alignItems: "center", paddingLeft: 150}}
                     >
                         <input
                             type="text"
-                            placeholder="Search by brand, model, etc."
+                            placeholder="Search by brand, color, other keywords..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            style={{ padding: 8, width: 250, marginRight: 8 }}
+                            style={{ padding: 8, width: 550, marginRight: 8 }}
                         />
                         <button type="submit">Search</button>
                     </form>
 
-                    {loading && <h2>Sneaker Vault...</h2>}
+                    {loading && <h4 style = {{paddingLeft: 150}}>Loading Sneakers from Our Vault 🔒...</h4>}
                     {error && <p style={{ color: "red" }}>{error}</p>}
 
                     {!loading && !error && (

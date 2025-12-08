@@ -78,12 +78,10 @@ export default function Trending(props) {
     return (
         <div style = {{paddingTop: 80}}>
             <Container fluid>
-                <Row>
+                <Row className="g-3">
                     <h1 style = {{paddingBottom: 40}}>Need more than Shoes? Trending Products on the Market!</h1>
-                        {/* TODO: 1) Get all Sneakers (+ implement Pagination - LATER), 2) Implement Filtering Logic with Search Bar below "Trending Sneakers", 3) Implement Filtering Logic on LHS by Brand, Price, Color, 4) Add a 'My Shoes' page*/}
-                        {/* General TODO: fix any spacing/coloring to be consistent for any device*/}
                         {allSneakers.map((shoe) => (
-                            <Col key={shoe.styleID || shoe.shoeName}>
+                            <Col key={shoe.styleID || shoe.shoeName} xs={12} sm={6} md={4} lg={3}>
                                 <ShoeCard 
                                     key = {shoe.make}
                                     styleID={shoe.styleID}

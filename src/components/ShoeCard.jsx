@@ -11,6 +11,7 @@ function ShoeCard(props) {
   let colorway = props.colorway;
   let thumbnail = props.thumbnail;
   let retailPrice = props.retailPrice;
+  let resellLinks = props.resellLinks;
 
   // ALT image
   let silhoutte = props.silhoutte;
@@ -37,9 +38,7 @@ function ShoeCard(props) {
         {shoeName ? <Card.Title className="fs-6 mb-2">{shoeName}</Card.Title> : <></>}
         {colorway ? <Card.Text className="small mb-1">{`Color: ${colorway}`}</Card.Text> : <></>}
         {brand ? <Card.Text className="small mb-1">{`Brand: ${brand}`}</Card.Text>: <></>}
-        {retailPrice ? <Card.Text className="small mt-auto fw-bold">{`Price: $${retailPrice}`}</Card.Text> : <></>}
-
-        {/* TODO: 1) Add the prices & links to buy below 'Price' and fix card object spacing as needed, 2) Fix card object properties as deemed necessary*/}
+        {retailPrice ? <Card.Text className="small mt-auto fw-bold">{`Retail Price: $${retailPrice}`}</Card.Text> : <></>}
       </Card.Body>
     </Card>
   )
