@@ -15,9 +15,11 @@ function FavoriteScreen() {
         return { xs: 12, sm: 6, md: 4, lg: 3 };
       }
     };
+
     
     return (
       <div style={{paddingTop: 80}}>
+        <h1>Your Styles</h1>
         <Container fluid>
           <Row className="g-3 justify-content-center">
             {
