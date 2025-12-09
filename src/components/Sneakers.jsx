@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Row, Col, Pagination } from "react-bootstrap";
+import { Container, Row, Col, Pagination, Form, Button } from "react-bootstrap";
 import "./Sneakers.css";
 import ShoeCard from "./ShoeCard";
 import FilterPanel from "./FilterPanel";
@@ -248,94 +248,98 @@ export default function Sneakers() {
                 </Row>
                 <Row>
 
-                  {/* This is the filter panel on the side of the screen */}
-                  {
-                    allSneakers.length > 0 ?
-                    <Col xs={12} md={3}>
-                        <FilterPanel colors={colors} prices={prices} brands={brands} onFilter={handleFilter}/>
-                    </Col>
-                    :
-                    <></>
-                  }
-                    <Col xs={12} md={9}>
-                        {/* Search form */}
-                    <form
-                        onSubmit={handleSearch}
-                        style={{ marginBottom: 30, width: "100%", display: "flex", alignItems: "center" }}
-                    >
-                        <input
-                            type="text"
-                            placeholder="Search by brand, model, etc."
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            style={{ padding: 8, width: 250, marginRight: 8 }}
-                        />
-                        <button type="submit">Search</button>
-                    </form>
-
-                    {loading && <h2>Sneaker Vault...</h2>}
-                    {error && <p style={{ color: "red" }}>{error}</p>}
-
-                    {!loading && !error && (
-                        <>
-                            {filtersActive && filtered.length === 0 ? (
-                                <div style={{ padding: "40px", textAlign: "center" }}>
-                                    <h4>No shoes match your filters</h4>
-                                    <p className="text-muted">Try adjusting your filter criteria</p>
-                                </div>
-                            ) : (
-                                <Row className="g-3">
-                                    {display.map((shoe) => (
-                                        <Col key={shoe.styleID || shoe.shoeName} xs={12} sm={6} md={4} lg={3}>
-                                            <ShoeCard
-                                                styleID={shoe.styleID}
-                                                brand={shoe.brand}
-                                                shoeName={shoe.shoeName}
-                                                colorway={shoe.colorway}
-                                                thumbnail={shoe.thumbnail}
-                                                retailPrice={shoe.retailPrice}
-                                                silhoutte={shoe.silhoutte}
-                                                id={shoe._id}
-                                            />
-                                        </Col>
-                                    ))}
-                                </Row>
-                            )}
-                        </>
-                    )}
-                    </Col>
-                </Row>
-
+                {/* This is the filter panel on the side of the screen */}
                 {
-                  dataToPaginate.length > 0 && totalPages > 1 && (
-                      <div className="d-flex justify-content-center mt-4">
-                          <Pagination>
-                              {/* Previous button */}
-                              <Pagination.Prev 
-                                  disabled={page === 1}
-                                  onClick={() => setPage(prev => Math.max(1, prev - 1))}
-                              />
+                  allSneakers.length > 0 ?
+                  <Col xs={12} md={3}>
+                    <FilterPanel colors={colors} prices={prices} brands={brands} onFilter={handleFilter}/>
+                  </Col>
+                  :
+                  <></>
+                }
+                <Col xs={12} md={9}>
 
-                              {/* Actual pagination button */}
-                              {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
-                                  <Pagination.Item
-                                      key={pageNum}
-                                      active={pageNum === page}
-                                      onClick={() => setPage(pageNum)}
-                                  >
-                                      {pageNum}
-                                  </Pagination.Item>
-                              ))}
+                {/* Search form */}
+                <form onSubmit={handleSearch} style={{ marginBottom: 30, width: "100%" }}>
+                  <Form.Group className="d-flex align-items-center">
+                  <Form.Label htmlFor="search-input" className="me-3 mb-0" style={{ fontWeight: 500 }}>
+                    Search Sneakers
+                  </Form.Label>
+                  <Form.Control
+                    id="search-input"
+                    type="text"
+                    placeholder="Search by brand, model, etc."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    style={{ width: 250, marginRight: 8 }}
+                  />
+                  <Button type="submit" variant="primary">Search</Button>
+                  </Form.Group>
+                </form>
 
-                              {/* Next button */}
-                              <Pagination.Next 
-                                  disabled={page === totalPages}
-                                  onClick={() => setPage(prev => Math.min(totalPages, prev + 1))}
-                              />
-                          </Pagination>
-                    </div>
+                {loading && <h2>Sneaker Vault...</h2>}
+                {error && <p style={{ color: "red" }}>{error}</p>}
+
+                {!loading && !error && (
+                  <>
+                    {filtersActive && filtered.length === 0 ? (
+                      <div style={{ padding: "40px", textAlign: "center" }}>
+                        <h4>No shoes match your filters</h4>
+                        <p className="text-muted">Try adjusting your filter criteria</p>
+                      </div>
+                ) : (
+                  <Row className="g-3">
+                    {display.map((shoe,i) => (
+                      <Col key={shoe.styleID || shoe.shoeName} xs={12} sm={6} md={4} lg={3}>
+                        <ShoeCard
+                          styleID={shoe.styleID}
+                          brand={shoe.brand}
+                          shoeName={shoe.shoeName}
+                          colorway={shoe.colorway}
+                          thumbnail={shoe.thumbnail}
+                          retailPrice={shoe.retailPrice}
+                          silhoutte={shoe.silhoutte}
+                          id={shoe._id}
+                        />
+                      </Col>
+                      ))}
+                  </Row>
                 )}
+              </>
+              )}
+              </Col>
+            </Row>
 
+            {/* Bottom Screen Pagination */}
+            {
+              dataToPaginate.length > 0 && totalPages > 1 && (
+                <div className="d-flex justify-content-center mt-4">
+                  <Pagination>
+                    {/* Previous button */}
+                    <Pagination.Prev 
+                      disabled={page === 1}
+                      onClick={() => setPage(prev => Math.max(1, prev - 1))}
+                    />
+
+                    {/* Actual pagination button */}
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+                      <Pagination.Item
+                        key={pageNum}
+                        active={pageNum === page}
+                        onClick={() => setPage(pageNum)}
+                      >
+                        {pageNum}
+                    </Pagination.Item>
+                    ))}
+
+                    {/* Next button */}
+                    <Pagination.Next 
+                      disabled={page === totalPages}
+                      onClick={() => setPage(prev => Math.min(totalPages, prev + 1))}
+                    />
+                </Pagination>
+              </div>
+              )}
             </Container>
         </div>
     );

@@ -74,13 +74,15 @@ function FilterPanel(props) {
   return (
     <Card className="filter-panel">
       <Card.Header>
-        <h5 className="mb-0">Filters</h5>
+        <h2 className="mb-0 h5">Filters</h2>
       </Card.Header>
       <Card.Body>
         <Accordion defaultActiveKey="0" flush>
           {/* Brand Filter */}
           <Accordion.Item eventKey="0">
-            <Accordion.Header>Brand</Accordion.Header>
+            <Accordion.Header>
+              <h3 className="h6 mb-0">Brand</h3>
+            </Accordion.Header>
             <Accordion.Body>
               <Form>
                 {brands.length > 0 ? (
@@ -103,7 +105,9 @@ function FilterPanel(props) {
 
           {/* Color Filter */}
           <Accordion.Item eventKey="1">
-            <Accordion.Header>Color</Accordion.Header>
+            <Accordion.Header>
+              <h3 className="h6 mb-0">Color</h3>
+            </Accordion.Header>
             <Accordion.Body>
               <Form>
                 {colors.length > 0 ? (
@@ -126,12 +130,15 @@ function FilterPanel(props) {
 
           {/* Price Range Filter */}
           <Accordion.Item eventKey="2">
-            <Accordion.Header>Price Range</Accordion.Header>
+            <Accordion.Header>
+              <h3 className="h6 mb-0">Price Range</h3>
+            </Accordion.Header>
             <Accordion.Body>
               <Form>
                 <Form.Group className="mb-3">
-                  <Form.Label>Min Price ($)</Form.Label>
+                  <Form.Label htmlFor="min-price">Min Price ($)</Form.Label>
                   <Form.Control
+                    id="min-price"
                     type="number"
                     placeholder={minPrice.toString()}
                     min="0"
@@ -140,8 +147,9 @@ function FilterPanel(props) {
                   />
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Label>Max Price ($)</Form.Label>
+                  <Form.Label htmlFor="max-price">Max Price ($)</Form.Label>
                   <Form.Control
+                    id="max-price"
                     type="number"
                     placeholder={maxPrice.toString()}
                     min="0"
@@ -155,49 +163,54 @@ function FilterPanel(props) {
 
           {/* Sort Options */}
           <Accordion.Item eventKey="3">
-            <Accordion.Header>Sort By</Accordion.Header>
+            <Accordion.Header>
+              <h3 className="h6 mb-0">Sort By</h3>
+            </Accordion.Header>
             <Accordion.Body>
               <Form>
-                <Form.Check
-                  type="radio"
-                  name="sort"
-                  id="sort-price-low"
-                  label="Price: Low to High"
-                  checked={sortOption === "price-low"}
-                  onChange={() => setSortOption("price-low")}
-                />
-                <Form.Check
-                  type="radio"
-                  name="sort"
-                  id="sort-price-high"
-                  label="Price: High to Low"
-                  checked={sortOption === "price-high"}
-                  onChange={() => setSortOption("price-high")}
-                />
-                <Form.Check
-                  type="radio"
-                  name="sort"
-                  id="sort-name-asc"
-                  label="Name: A to Z"
-                  checked={sortOption === "name-asc"}
-                  onChange={() => setSortOption("name-asc")}
-                />
-                <Form.Check
-                  type="radio"
-                  name="sort"
-                  id="sort-name-desc"
-                  label="Name: Z to A"
-                  checked={sortOption === "name-desc"}
-                  onChange={() => setSortOption("name-desc")}
-                />
-                <Form.Check
-                  type="radio"
-                  name="sort"
-                  id="sort-brand"
-                  label="Brand"
-                  checked={sortOption === "brand"}
-                  onChange={() => setSortOption("brand")}
-                />
+                <Form.Group as="fieldset">
+                  <Form.Label as="legend" className="visually-hidden">Sort By</Form.Label>
+                  <Form.Check
+                    type="radio"
+                    name="sort"
+                    id="sort-price-low"
+                    label="Price: Low to High"
+                    checked={sortOption === "price-low"}
+                    onChange={() => setSortOption("price-low")}
+                  />
+                  <Form.Check
+                    type="radio"
+                    name="sort"
+                    id="sort-price-high"
+                    label="Price: High to Low"
+                    checked={sortOption === "price-high"}
+                    onChange={() => setSortOption("price-high")}
+                  />
+                  <Form.Check
+                    type="radio"
+                    name="sort"
+                    id="sort-name-asc"
+                    label="Name: A to Z"
+                    checked={sortOption === "name-asc"}
+                    onChange={() => setSortOption("name-asc")}
+                  />
+                  <Form.Check
+                    type="radio"
+                    name="sort"
+                    id="sort-name-desc"
+                    label="Name: Z to A"
+                    checked={sortOption === "name-desc"}
+                    onChange={() => setSortOption("name-desc")}
+                  />
+                  <Form.Check
+                    type="radio"
+                    name="sort"
+                    id="sort-brand"
+                    label="Brand"
+                    checked={sortOption === "brand"}
+                    onChange={() => setSortOption("brand")}
+                  />
+                </Form.Group>
               </Form>
             </Accordion.Body>
           </Accordion.Item>
