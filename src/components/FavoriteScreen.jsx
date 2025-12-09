@@ -40,7 +40,6 @@ function FavoriteScreen() {
                 ))
               :
               <div style={{ padding: "40px", textAlign: "center" }}>
-                <h1>No favorite shoes yet</h1>
                 <p className="text-muted">Start adding shoes to your favorites to see them here!</p>
               </div>
             }

@@ -247,30 +247,6 @@ export default function Sneakers() {
                 </Row>
                 <Row>
 
-                  {/* This is the filter panel on the side of the screen */}
-                  {
-                    allSneakers.length > 0 ?
-                    <Col xs={12} md={3}>
-                        <FilterPanel colors={colors} prices={prices} brands={brands} onFilter={handleFilter}/>
-                    </Col>
-                    :
-                    <></>
-                  }
-                    <Col xs={12} md={9}>
-                        {/* Search form */}
-                    <form
-                        onSubmit={handleSearch}
-                        style={{ marginBottom: 30, width: "100%", display: "flex", alignItems: "center", paddingLeft: 150}}
-                    >
-                        <input
-                            type="text"
-                            placeholder="Search by brand, color, other keywords..."
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            style={{ padding: 8, width: 550, marginRight: 8 }}
-                        />
-                        <button type="submit">Search</button>
-                    </form>
                 {/* This is the filter panel on the side of the screen */}
                 {
                   allSneakers.length > 0 ?
@@ -300,10 +276,8 @@ export default function Sneakers() {
                   </Form.Group>
                 </form>
 
-                    {loading && <h4 style = {{paddingLeft: 150}}>Loading Sneakers from Our Vault 🔒...</h4>}
-                    {error && <p style={{ color: "red" }}>{error}</p>}
-                {loading && <h2>Sneaker Vault...</h2>}
-                {error && <p style={{ color: "red" }}>{error}</p>}
+                
+                {loading && <h2 style = {{paddingLeft: 150}}>Loading Sneakers from Our Vault 🔒...</h2>}
 
                 {!loading && !error && (
                   <>
