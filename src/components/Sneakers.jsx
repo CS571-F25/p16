@@ -243,7 +243,7 @@ export default function Sneakers() {
         <div style={{ paddingTop: 80 }}>
             <Container fluid>
                 <Row>
-                    <h1 style={{ paddingBottom: 20}}>Search Sneakers</h1>
+                    <h1 style={{ paddingBottom: 20}}>All Sneakers</h1>
                 </Row>
                 <Row>
 
@@ -259,7 +259,7 @@ export default function Sneakers() {
                 <Col xs={12} md={9}>
 
                 {/* Search form */}
-                <form onSubmit={handleSearch} style={{ marginBottom: 30, width: "100%" }}>
+                <form onSubmit={handleSearch} style={{ marginBottom: 30, paddingLeft: 100, width: "100%" }}>
                   <Form.Group className="d-flex align-items-center">
                   <Form.Label htmlFor="search-input" className="me-3 mb-0" style={{ fontWeight: 500 }}>
                     Search Sneakers
@@ -270,7 +270,7 @@ export default function Sneakers() {
                     placeholder="Search by brand, model, etc."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    style={{ width: 250, marginRight: 8 }}
+                    style={{ width: 400, marginRight: 8 }}
                   />
                   <Button type="submit" variant="primary">Search</Button>
                   </Form.Group>
