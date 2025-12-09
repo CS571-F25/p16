@@ -288,7 +288,7 @@ export default function Sneakers() {
                       </div>
                 ) : (
                   <Row className="g-3">
-                    {display.map((shoe,i) => (
+                    {display.map((shoe, index) => (
                       <Col key={shoe.styleID || shoe.shoeName} xs={12} sm={6} md={4} lg={3}>
                         <ShoeCard
                           styleID={shoe.styleID}
@@ -299,6 +299,7 @@ export default function Sneakers() {
                           retailPrice={shoe.retailPrice}
                           silhoutte={shoe.silhoutte}
                           id={shoe._id}
+                          index={index}
                         />
                       </Col>
                       ))}

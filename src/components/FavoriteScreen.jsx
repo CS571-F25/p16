@@ -24,7 +24,7 @@ function FavoriteScreen() {
           <Row className="g-3 justify-content-center">
             {
               favorites.length > 0 ?
-                favorites.map(shoe => (
+                favorites.map((shoe, index) => (
                   <Col key={shoe.id || shoe.styleID} {...getColProps()}>
                     <ShoeCard 
                        styleID={shoe.styleID}
@@ -35,6 +35,7 @@ function FavoriteScreen() {
                        retailPrice={shoe.retailPrice}
                        silhoutte={shoe.silhoutte}
                        id={shoe.id}
+                       index={index}
                     />
                   </Col>
                 ))

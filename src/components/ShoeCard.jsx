@@ -12,6 +12,7 @@ function ShoeCard(props) {
   let thumbnail = props.thumbnail;
   let retailPrice = props.retailPrice;
   let resellLinks = props.resellLinks;
+  let index = props.index
 
   // ALT image
   let silhoutte = props.silhoutte;
@@ -25,7 +26,8 @@ function ShoeCard(props) {
     thumbnail: props.thumbnail,
     retailPrice: props.retailPrice,
     silhoutte: props.silhoutte,
-    id: props.id
+    id: props.id,
+    index: props.index
   };
 
   return (
@@ -33,7 +35,7 @@ function ShoeCard(props) {
       <div style={{ position: 'absolute', top: '8px', right: '8px', zIndex: 10 }}>
         <FavoriteButton shoe={shoe} />
       </div>
-      <Card.Img variant="top" src={thumbnail} alt={silhoutte} style={{ objectFit: 'contain', height: '150px', padding: '8px' }} />
+      <Card.Img variant="top" src={thumbnail} alt={`${silhoutte}-${index}`} style={{ objectFit: 'contain', height: '150px', padding: '8px' }} />
       <Card.Body className="d-flex flex-column p-2">
         {shoeName ? <Card.Title className="fs-6 mb-2">{shoeName}</Card.Title> : <></>}
         {colorway ? <Card.Text className="small mb-1">{`Color: ${colorway}`}</Card.Text> : <></>}

@@ -80,7 +80,7 @@ export default function Trending(props) {
             <Container fluid>
                 <Row className="g-3">
                     <h1 style = {{paddingBottom: 40}}>Need more than Shoes? Trending Products on the Market!</h1>
-                        {allSneakers.map((shoe) => (
+                        {allSneakers.map((shoe, index) => (
                             <Col key={shoe.styleID || shoe.shoeName} xs={12} sm={6} md={4} lg={3}>
                                 <ShoeCard 
                                     key = {shoe.make}
@@ -92,6 +92,7 @@ export default function Trending(props) {
                                     retailPrice = {shoe.retailPrice}
                                     silhoutte = {shoe.silhoutte}
                                     id={shoe._id}
+                                    index={index}
                                 />
                             </Col>
                         ))}

@@ -9,7 +9,7 @@ function NavigationBar() {
   return (
     <Navbar bg="dark" data-bs-theme="dark" expand="sm" fixed="top">
       {/* <Navbar.Brand href="#home" id="brand">Sneaker Vault</Navbar.Brand> */}
-      <img src = {left} alt = "Sneaker Vault Logo" width = "100" height = "80" id = "svl-logo"/>
+      <img src = {left} alt = "Sneaker Vault Logo left" width = "100" height = "80" id = "svl-logo"/>
       <Container>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -22,7 +22,7 @@ function NavigationBar() {
           </Nav>
         </Navbar.Collapse>
       </Container>
-      <img src = {right} alt = "Sneaker Vault Logo" width = "100" height = "80" id = "svr-logo"/>
+      <img src = {right} alt = "Sneaker Vault Logo right" width = "100" height = "80" id = "svr-logo"/>
     </Navbar>
   )
 }
